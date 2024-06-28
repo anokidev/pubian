@@ -1,0 +1,2 @@
+class AddonScaffoldCommand:
+    pass

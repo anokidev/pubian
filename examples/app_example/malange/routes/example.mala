@@ -1,0 +1,8 @@
+<script>
+
+    Every mala components can
+    can accept arguments.
+
+    const args = __args__
+
+</script>

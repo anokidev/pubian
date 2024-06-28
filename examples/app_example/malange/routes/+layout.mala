@@ -1,0 +1,13 @@
+[:script]
+    include malange.included.head as <mln-head>
+    include malange.included.body as <mln-body>
+[/script]
+
+<html>
+    <head>
+        <mln-head>
+    </head>
+    <body>
+        <mln-body>
+    </body>
+</html>

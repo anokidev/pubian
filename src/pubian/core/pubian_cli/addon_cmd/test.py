@@ -1,0 +1,2 @@
+class AddonTestCommand:
+    pass

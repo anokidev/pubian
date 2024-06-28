@@ -1,0 +1,130 @@
+"""
+
+    Docstring still works. Voila!
+
+"""
+
+# ------- SIMPLE COMMENTING -------
+
+<!--
+    HTML comments are still the same.
+-->
+
+# There are one liner comment, like this.
+
+# ------- CODE STRUCTURES -------
+
+<!--
+
+    A directive is a block that is wrapped like this:
+
+    [direc]
+        ......
+    [/direc]
+
+    A directive may have a subdirective:
+
+    [direc]
+
+    (subdirec)
+
+    [/direc]
+
+    A directive, unlike a tag, is treated special by Malange.
+    Here are the list of directive:
+    - script: Containing slightly-modified Python code.
+    - cond: Conditional rendering using subdirec: if, elif, and else.
+    - for & while: Looping.
+
+    For script, you need to indent one time.
+    [script]
+        code goes here
+    [/script]
+
+-->
+
+# ------- IMPORTING MECHANISM -------
+
+[script]
+
+    # To import a .py file, use 'import'.
+    import math
+
+    # Python STD are replace by Malange Standard Library
+    (MSTD), such as: console, localhost, etc.
+
+    # To import a .mala file, use 'include'.
+    # Note that '*' doesn't work.
+    include example    # This is basic form.
+    from abc include a # the from ..., the ... must be a directory.
+
+    # You can't do this:
+    # include abc.a
+
+    # All importable/includable directories can be defined within
+    # the list LOCAL_FILES config. Also it is not recommended to
+    # include the route folder in the LOCAL_FILES.
+
+[/script]
+
+# ------- VARIABLE SYSTEM -------
+
+[script]
+
+    # To create a variable, use 'let'.
+    # Yes, type hinting still works.
+    let display_counter: str = "ok"
+
+    # To create a variable that if mutate will cause
+    # the component that is binded to the variable to
+    # be re-rendered, use keyword 'bind'.
+    bind counter = 0
+
+    # The value of this variable can't be
+    # changed, aka a constant.
+    const CONSTANT = "No counter for you hehe"
+
+    # You can also do this.
+    let variable = 0;
+    variable++;
+    variable--;
+
+[/script]
+
+# ------- PYTHON CODES? -------
+
+[script]
+
+    Python code still works. But there are "filtering"
+    in the importing. Several os-dependent libs don't
+    work. Here are the list:
+    
+
+[/script]
+
+# ------- CONDITIONAL RENDERING -------
+
+[cond]
+(if display_counter == "ok")
+    <!-- To embed a variable, use {variable_name} -->
+    <h1>The counter is {counter}.</h1>
+(elif display_counter == "maybe")
+    <h1>The counter is... yeah nvm.</h1>
+(elif display_counter == "nope)
+    <h1>Counter is not allowed. Here is the message</h1>
+    <p>{CONSTANT}</p>
+[else]
+    <h1>Uhh... I can't decide!</h1>
+[/cond]
+
+# ------- HOW-TO: BIND -------
+
+[script]
+    bind counter
+[/script]
+
+<button on:click={counter++}>Click me!</button>
+
+<!- Here is how to include a mala component.->
+
+<example> # This is enough. No need for <example/>
